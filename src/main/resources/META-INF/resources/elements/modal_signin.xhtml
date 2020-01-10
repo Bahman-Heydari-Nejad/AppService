@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+>
+
+    <p:dialog header="Sign In" widgetVar="signinModal" modal="true" resizable="false"
+              appendTo="@(body)">
+        <h:form prependId="false">
+
+            <h:panelGrid columns="3">
+
+                <h:outputLabel for="loginId" value="Name or Email or Mobile: "
+                               icon="fa fa-floppy-o"/>
+                <p:inputText id="loginId" value="#{authenticationBean.loginId}" required="true"
+                             requiredMessage="Login ID required!" label="Login ID"/>
+                <p:message for="loginId" showDetail="false"/>
+
+                <h:outputLabel for="password" value="Password: "/>
+                <p:password id="password" value="#{authenticationBean.password}" required="true"
+                            requiredMessage="Password required!" label="Password"/>
+                <p:message for="password" showDetail="false"/>
+
+            </h:panelGrid>
+
+            <br/>
+
+            <p:commandButton value="Login" icon="fa fa-arrow-circle-up"
+                             styleClass="btn-success"
+                             action="#{authenticationBean.authenticate()}"/>
+
+        </h:form>
+    </p:dialog>
+
+</ui:composition>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet library="primefaces-extensions" name="primefaces-extensions.css"/>
+</h:head>
+<h:body onload="PF('dlg').show();">
+
+    <div id="LOGIN_SECTION">
+
+        <div class="ui-g-12 ui-md-4">
+            <h:form prependId="false">
+
+                <p:dialog header="Sign In" widgetVar="dlg" resizable="false">
+
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <div class="ui-material">
+                            <p:inputText id="loginId" value="#{authenticationBean.loginId}"
+                                         required="true"
+                                         requiredMessage="Login ID required!"
+                                         label="Login ID"/>
+                            <h:outputLabel for="loginId" value="Name or Email or Mobile: "/>
+                        </div>
+
+                        <div>
+                            <p:password id="password" value="#{authenticationBean.password}"
+                                        required="true"
+                                        requiredMessage="Password required!"
+                                        label="Password"/>
+                            <h:outputLabel for="password" value="Password: "/>
+                        </div>
+
+                    </h:panelGrid>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" icon="fa fa-sign-in"
+                                         styleClass="btn-success"
+                                         action="#{authenticationBean.authenticate}"/>
+                    </f:facet>
+
+                </p:dialog>
+
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+</html>
